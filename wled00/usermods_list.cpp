@@ -11,8 +11,10 @@
  */
 //#include "../usermods/EXAMPLE_v2/usermod_v2_example.h"
 
-#ifdef USERMOD_BATTERY
-  #include "../usermods/Battery/usermod_v2_Battery.h"
+#define USERMOD_STAIRCASE_WIPE_BASIC 1
+
+#ifdef USERMOD_BATTERY_STATUS_BASIC
+#include "../usermods/battery_status_basic/usermod_v2_battery_status_basic.h"
 #endif
 
 #ifdef USERMOD_DALLASTEMPERATURE
@@ -82,6 +84,10 @@
 
 #ifdef USERMOD_ANIMATED_STAIRCASE
   #include "../usermods/Animated_Staircase/Animated_Staircase.h"
+#endif
+
+#ifdef USERMOD_STAIRCASE_WIPE_BASIC
+#include "../usermods/stairway_wipe_basic/stairway-wipe-usermod-v2.h"
 #endif
 
 #ifdef USERMOD_MULTI_RELAY
@@ -256,7 +262,11 @@ void registerUsermods()
   #ifdef USERMOD_ANIMATED_STAIRCASE
   usermods.add(new Animated_Staircase());
   #endif
-  
+
+  #ifdef USERMOD_STAIRCASE_WIPE_BASIC
+  usermods.add(new StairwayWipeUsermod());
+  #endif
+
   #ifdef USERMOD_MULTI_RELAY
   usermods.add(new MultiRelay());
   #endif
